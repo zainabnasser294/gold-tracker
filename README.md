@@ -1,59 +1,46 @@
-# GoldTracker
+# الذهب العُماني
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.0.
+لوحة متابعة أسعار الذهب في سلطنة عُمان، مبنية بـ Angular وTailwind CSS. تعرض أسعار العيارات الأربعة، وتحسب قيمة الذهب حسب الوزن، وتعرض تغير الأسعار خلال آخر 30 يوم في رسم بياني وجدول. الواجهة عربية من اليمين لليسار (RTL).
 
-## Development server
+> **تنبيه:** الأسعار وسجل الأيام بيانات تجريبية ثابتة داخل المشروع، وليست أسعار سوق مباشرة.
 
-To start a local development server, run:
+## المميزات
+
+- أسعار اليوم لعيارات 18 و21 و22 و24
+- حاسبة تقدّر قيمة الذهب حسب العيار والوزن
+- رسم بياني لتغير السعر خلال 30 يوم مع أعلى وأقل سعر
+- جدول سجل الأسعار لجميع العيارات
+- تصميم متجاوب مع الكمبيوتر والتابلت والجوال
+- روابط تنقل تنزلق إلى أقسام الصفحة
+
+## التقنيات المستخدمة
+
+Angular 22 · TypeScript · Tailwind CSS
+
+## طريقة التشغيل
+
+المتطلبات: Node.js (إصدار حديث متوافق مع Angular 22) وnpm.
 
 ```bash
-ng serve
+npm install
+npm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+ثم افتحي الرابط الذي يظهر في الترمنال (غالباً `http://localhost:4200`).
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+لإنشاء نسخة للنشر:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## هيكل المشروع
 
-## Running unit tests
+داخل `src/app`:
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+| المجلد | الوظيفة |
+|---|---|
+| `components/` | مكونات الواجهة: الهيدر، الـ Hero، بطاقة السعر، الأسعار، الحاسبة، التغير، الرسم، الجدول، الفوتر |
+| `services/` | `gold.service.ts` يوفّر البيانات للمكونات |
+| `models/` | أنواع البيانات (`gold.model.ts`) |
+| `data/` | البيانات التجريبية (`gold-data.ts`) |

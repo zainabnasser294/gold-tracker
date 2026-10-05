@@ -1,0 +1,30 @@
+<section id="history" class="mx-auto max-w-6xl px-4 py-8">
+  <h2 class="text-2xl font-bold text-gray-800">سجل الأسعار</h2>
+  <p class="mt-1 text-gray-500">أسعار آخر 30 يوم لجميع العيارات (ر.ع / جرام)</p>
+
+  <!-- overflow-x-auto: تمرير أفقي في الشاشات الصغيرة -->
+  <div class="mt-6 overflow-x-auto rounded-2xl bg-white shadow">
+    <table class="w-full min-w-[500px] text-center">
+      <thead class="bg-amber-600 text-white">
+        <tr>
+          <th scope="col" class="p-3">التاريخ</th>
+          <th scope="col" class="p-3">18 قيراط</th>
+          <th scope="col" class="p-3">21 قيراط</th>
+          <th scope="col" class="p-3">22 قيراط</th>
+          <th scope="col" class="p-3">24 قيراط</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of rows; track row.date) {
+          <tr class="odd:bg-white even:bg-amber-50">
+            <td class="p-3"><span dir="ltr">{{ row.date }}</span></td>
+            <td class="p-3">{{ row.prices[18].toFixed(2) }}</td>
+            <td class="p-3">{{ row.prices[21].toFixed(2) }}</td>
+            <td class="p-3">{{ row.prices[22].toFixed(2) }}</td>
+            <td class="p-3">{{ row.prices[24].toFixed(2) }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

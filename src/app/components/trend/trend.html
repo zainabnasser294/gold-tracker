@@ -1,0 +1,44 @@
+<section id="trend" class="mx-auto max-w-6xl px-4 py-8">
+  <h2 class="text-2xl font-bold text-gray-800">تغير الأسعار خلال 30 يوم</h2>
+  <p class="mt-1 text-gray-500">اختر العيار لمتابعة حركة سعره</p>
+
+  <!-- أزرار العيارات -->
+  <div class="mt-6 flex flex-wrap gap-2">
+    @for (k of karats; track k) {
+      <button (click)="selectedKarat.set(k)"
+              class="rounded-lg px-4 py-2 font-medium shadow"
+              [class]="selectedKarat() === k ? 'bg-amber-600 text-white' : 'bg-white text-gray-700'">
+        عيار {{ k }}
+      </button>
+    }
+  </div>
+
+  <!-- ثلاث بطاقات ملخص -->
+  <!-- ثلاث بطاقات ملخص: نفس المكوّن بقيم مختلفة -->
+  <div class="mt-6 grid gap-4 sm:grid-cols-3">
+    <app-stat-card label="السعر الحالي" [value]="current().toFixed(2)" valueClass="text-amber-600" />
+    <app-stat-card label="أعلى سعر" [value]="highest().toFixed(2)" valueClass="text-green-600" />
+    <app-stat-card label="أقل سعر" [value]="lowest().toFixed(2)" valueClass="text-red-600" />
+  </div>
+
+  <!-- الرسم البياني: مكوّن مستقل يستقبل قائمة الأسعار -->
+  <app-price-chart [prices]="prices()" />
+
+  <!-- شريط المقارنة -->
+  <div class="mt-6 flex flex-wrap justify-around gap-4 rounded-2xl bg-amber-50 p-5 text-center">
+    <div>
+      <p class="text-sm text-gray-500">السعر الحالي</p>
+      <p class="font-bold">{{ current().toFixed(2) }}</p>
+    </div>
+    <div>
+      <p class="text-sm text-gray-500">السعر السابق</p>
+      <p class="font-bold">{{ previous().toFixed(2) }}</p>
+    </div>
+    <div>
+      <p class="text-sm text-gray-500">مقدار التغير</p>
+      <p class="font-bold" [class]="change() >= 0 ? 'text-green-600' : 'text-red-600'">
+        {{ change() >= 0 ? '+' : '' }}{{ change().toFixed(2) }}
+      </p>
+    </div>
+  </div>
+</section>

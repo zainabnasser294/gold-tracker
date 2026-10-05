@@ -1,0 +1,10 @@
+<section id="prices" class="mx-auto max-w-6xl px-4 py-8">
+  <h2 class="text-2xl font-bold text-gray-800">أسعار الذهب اليوم</h2>
+  <p class="mt-1 text-gray-500">سعر الجرام لكل عيار بالريال العماني</p>
+
+  <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    @for (p of prices; track p.karat) {
+      <app-price-card [karat]="p.karat" [price]="p.pricePerGram" />
+    }
+  </div>
+</section>
